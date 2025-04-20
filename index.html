@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="CaféBinary - Donde la tecnología y el café se encuentran. Comunidad, aprendizaje y buena vibra.">
+    <meta name="keywords" content="Café, Tecnología, Comunidad, Aprendizaje, Charlas, Coworking">
+    <meta name="author" content="CaféBinary">
+    <title>CaféBinary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Decoraciones en los bordes */
+    body::before, body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        background: linear-gradient(to bottom, #ff6b6b, #ffe8e8);
+        z-index: 999;
+    }
+
+    body::before {
+        left: 0;
+    }
+
+    body::after {
+        right: 0;
+    }
+
+    /* Opcional: Animación para un efecto dinámico */
+    @keyframes glow {
+        0% { box-shadow: 0 0 10px #ff6b6b; }
+        50% { box-shadow: 0 0 20px #ffe8e8; }
+        100% { box-shadow: 0 0 10px #ff6b6b; }
+    }
+
+    body::before, body::after {
+        animation: glow 3s infinite;
+    }
+        :root {
+            --primary: #ff6b6b;
+            --accent: #ffe8e8;
+            --bg-light: #fff3f3;
+            --text: #333;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            color: var(--text);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact input, .contact textarea {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact button {
+            padding: 1rem;
+            background: var(--primary);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: #ff3b3b;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: none;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background: #ff3b3b;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 1rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <style>
+            /* Tus estilos existentes */
+            body {
+                background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+                color: var(--text);
+                scroll-behavior: smooth;
+                line-height: 1.6;
+            }
+        
+            header {
+                background-color: var(--primary);
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        
+            /* Media query para pantallas pequeñas (teléfonos) */
+            @media (max-width: 768px) {
+                header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+        
+                nav {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+        
+                .title {
+                    font-size: 1.8rem;
+                }
+        
+                .grid {
+                    grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+                }
+        
+                .card {
+                    padding: 1rem;
+                }
+            }
+        
+            /* Media query para pantallas muy pequeñas (teléfonos compactos) */
+            @media (max-width: 480px) {
+                header {
+                    padding: 1rem;
+                }
+        
+                nav a {
+                    font-size: 0.9rem;
+                }
+        
+                .title {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
+        <h1>CaféBinary</h1>
+        <nav aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Sobre nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#menu">Menú</a> <!-- Botón de Menú -->
+            <a href="#promociones">Promociones</a> <!-- Botón de Promociones -->
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+    <h2 class="title">Bienvenido a CaféBinary</h2>
+    <p style="text-align:center; max-width:800px; margin:auto; font-size: 1.2rem;">
+        <strong>¡Donde la tecnología y el café se encuentran!</strong> En CaféBinary, creamos un espacio único para los amantes del conocimiento, la innovación y el buen café. 
+        Aprende, colabora y disfruta en un ambiente diseñado para inspirarte.
+    </p>
+    <div style="text-align: center; margin-top: 2rem;">
+        <img src="https://pixnio.com/free-images/2017/02/10/2017-02-10-18-06-45.jpg" alt="Café y laptop" style="width: 80%; max-width: 600px; border-radius: var(--radius);" loading="lazy">
+    </div>
+    <p style="text-align:center; max-width:800px; margin:auto; margin-top: 1.5rem; font-size: 1rem;">
+        Únete a nuestra comunidad y descubre un lugar donde las ideas fluyen tan rápido como el café. ¡Explora nuestros servicios, talleres y deliciosos platillos!
+    </p>
+</section>
+
+        <section id="nosotros">
+            <h2 class="title">Sobre nosotros</h2>
+            <p>
+                CaféBinary nació de la pasión por la tecnología y el buen café. Nuestro objetivo es crear una comunidad donde los entusiastas de la informática puedan aprender, enseñar y crecer juntos.
+            </p>
+            <ul>
+                <li>✅ Más de 20 charlas al mes</li>
+                <li>✅ Asesorías con expertos certificados</li>
+                <li>✅ Zona gamer y coworking</li>
+                <li>✅ Ambiente seguro, creativo e inspirador</li>
+            </ul>
+        </section>
+
+        <section id="valores">
+            <h2 class="title">Nuestros Valores</h2>
+            <div class="grid">
+                <article class="card"><i class="fas fa-hand-holding-heart"></i><h3>Empatía</h3><p>Nos ponemos en el lugar de cada cliente para ofrecer experiencias humanas.</p></article>
+                <article class="card"><i class="fas fa-lightbulb"></i><h3>Innovación</h3><p>Combinamos tecnología y gastronomía creativamente.</p></article>
+                <article class="card"><i class="fas fa-check-circle"></i><h3>Responsabilidad</h3><p>Cumplimos lo que prometemos, con integridad.</p></article>
+                <article class="card"><i class="fas fa-smile-beam"></i><h3>Amabilidad</h3><p>Ambiente cordial donde todos se sienten bienvenidos.</p></article>
+            </div>
+        </section>
+        
+        <section id="menu">
+            <h2 class="title">Menú</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://img.freepik.com/psd-gratis/deliciosa-taza-cafe-aislada_23-2151806499.jpg" alt="Café Espresso" loading="lazy">
+                    <h3>Café Espresso</h3>
+                    <p>Un clásico intenso y aromático, perfecto para empezar el día.</p>
+                    <p><strong>Precio:</strong> $3.00 </p>
+                </div>
+                <div class="card">
+                    <img src="https://www.starbucksathome.com/mx/sites/default/files/2021-03/Vanilla-Latte-4.jpg" alt="Latte de Vainilla" loading="lazy">
+                    <h3>Latte de Vainilla</h3>
+                    <p>Una mezcla suave de café y leche con un toque de vainilla.</p>
+                    <p><strong>Precio:</strong> $5.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.finedininglovers.com/sites/default/files/article_content_images/sandwich%C2%A9iStock.jpg" alt="Sandwich Gourmet" loading="lazy">
+                    <h3>Sandwich Gourmet</h3>
+                    <p>Pan artesanal con ingredientes frescos y saludables.</p>
+                    <p><strong>Precio:</strong> $8.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2020/03/como-hacer-pastel-de-chocolate-con-cerveza-y-betun.jpg" alt="Pastel de Chocolate" loading="lazy">
+                    <h3>Pastel de Chocolate</h3>
+                    <p>Un postre irresistible con el mejor cacao artesanal.</p>
+                    <p><strong>Precio:</strong> $9.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://karmele.com.mx/wp-content/uploads/2021/03/Croissant-de-Almendra.jpg" alt="Croissant de Almendras" loading="lazy">
+                    <h3>Croissant de Almendras</h3>
+                    <p>Hojaldre crujiente relleno de crema de almendras.</p>
+                    <p><strong>Precio:</strong> $4.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2023/12/29/el-te-matcha-es-una-bebida-que-cada-vez-esta-mas-de-moda.jpeg" alt="Té Matcha" loading="lazy">
+                    <h3>Té Matcha</h3>
+                    <p>Una bebida antioxidante con un sabor único y refrescante.</p>
+                    <p><strong>Precio:</strong> $4.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://laboutiquetrattoriaviajera.es/wp-content/uploads/recetas-de-smoothies.png" alt="Batida de Frutas" loading="lazy">
+                    <h3>Batida de Frutas</h3>
+                    <p>Una mezcla saludable de frutas frescas y yogurt.</p>
+                    <p><strong>Precio:</strong> $4.50</p>
+                </div>
+                <div class="card">
+                    <img src="https://mangomerken.com/wp-content/uploads/2021/12/paris-cake-galletas-portada.jpg" alt="Galletas Artesanales" loading="lazy">
+                    <h3>Galletas Artesanales</h3>
+                    <p>Hechas a mano con ingredientes naturales y mucho amor.</p>
+                    <p><strong>Precio:</strong> $3.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/450435923/es/foto/bagel-con-queso-cremoso.jpg?s=612x612&w=0&k=20&c=9Wj6HnS53xF5QBEj6toeN5lbwtyvu6gk2kjUcCc2Sao=" alt="Bagel con Queso Crema" loading="lazy">
+                    <h3>Bagel con Queso Crema</h3>
+                    <p>Bagel tostado con una generosa capa de queso crema.</p>
+                    <p><strong>Precio:</strong> $2.50</p>
+                </div>
+                <div class="card">
+                    <img src="https://assets.unileversolutions.com/recipes-v2/253159.jpg" alt="Muffin de Arándanos" loading="lazy">
+                    <h3>Muffin de Arándanos</h3>
+                    <p>Esponjoso y lleno de arándanos frescos.</p>
+                    <p><strong>Precio:</strong> $3.50</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.maxionline.ec/wp-content/uploads/2020/09/Quiche-Lorraine-768x512.jpg" alt="Tarta Francesa Salada" loading="lazy">
+                    <h3>tarta francesa salada
+                    <p>Clásica tarta con tocino, queso y crema.</p>
+                    <p><strong>Precio:</strong> $8.50</p>
+                </div>
+                <div class="card">
+                    <img src="https://cdn0.recetasgratis.net/es/posts/8/4/2/pancakes_esponjosos_58248_paso_5_600.jpg" alt="Pancakes Esponjosos" loading="lazy">
+                    <h3>Pancakes Esponjosos</h3>
+                    <h3>Pancakes con Miel</h3>
+                    <p>Servidos con miel de maple y mantequilla.</p>
+                    <p><strong>Precio:</strong> $5.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/68/b4/c0/68b4c0c5bf8dae98599455cdc13458d0.jpg" alt="Waffles con Frutas" loading="lazy">
+                    <h3>Waffles con Frutas</h3>
+                    <p>Cubiertos con frutas frescas y crema batida.</p>
+                    <p><strong>Precio:</strong> $5.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.simplecook.cl/cdn/shop/articles/2065665_0_800x.png?v=1670552027" alt="Omelette de Jamón y Queso" loading="lazy">
+                    <h3>Omelette de Jamón y Queso</h3>
+                    <p>Huevos frescos rellenos de jamón y queso derretido.</p>
+                    <p><strong>Precio:</strong> $4.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://veggiefestchicago.org/wp-content/uploads/2018/12/BreadAvocato2.jpg" alt="Tostada de Aguacate" loading="lazy">
+                    <h3>Tostada de Aguacate</h3>
+                    <p>Pan integral con aguacate fresco y especias.</p>
+                    <p><strong>Precio:</strong> $2.50</p>
+                </div>
+                <div class="card">
+                    <img src="https://assets.elgourmet.com/wp-content/uploads/2023/03/sopa-_wiEKe3BYpGML5Q06HJUyvPOhAbxkzm.png" alt="Sopa de Tomate" loading="lazy">
+                    <h3>Sopa de Tomate</h3>
+                    <p>Caliente y reconfortante, perfecta para cualquier día.</p>
+                    <p><strong>Precio:</strong> $5.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.gourmet.cl/wp-content/uploads/2016/09/EnsaladaCesar2.webp" alt="Ensalada César" loading="lazy">
+                    <h3>Ensalada César</h3>
+                    <p>Lechuga fresca, crutones y aderezo César.</p>
+                    <p><strong>Precio:</strong> $5.00</p>
+                </div>
+                <div class="card">
+                    <img src="https://www.justspices.es/media/recipe/brownie-chocolate.jpg" alt="Brownie de Chocolate" loading="lazy">
+                    <h3>Brownie de Chocolate</h3>
+                    <p>Delicioso y denso, con trozos de chocolate.</p>
+                    <p><strong>Precio:</strong> $3.00</p>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            #menu .grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        
+            #menu .card img {
+                height: 200px;
+                object-fit: cover;
+                border-radius: var(--radius);
+            }
+        
+            #menu .card h3 {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                color: var(--primary);
+            }
+        
+            #menu .card p {
+                margin: 0.5rem 0;
+            }
+        </style>
+
+        <section id="servicios">
+            <h2 class="title">Servicios</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Charlas Públicas</h3>
+                    <p>Expertos en IA, web, ciberseguridad y más.</p>
+                    <button class="dropdown-btn">Más opciones</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Calendario de charlas</a></li>
+                        <li><a href="#">Temas destacados</a></li>
+                        <li><a href="#">Ponentes invitados</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Privadas</h3>
+                    <p>Clases y asesorías personalizadas.</p>
+                    <button class="dropdown-btn">Más opciones</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Reservar asesoría</a></li>
+                        <li><a href="#">Planes personalizados</a></li>
+                        <li><a href="#">Testimonios</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Zona Digital</h3>
+                    <p>PCs de alto rendimiento, impresión y más.</p>
+                    <button class="dropdown-btn">Más opciones</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Lista de equipos</a></li>
+                        <li><a href="#">Precios por hora</a></li>
+                        <li><a href="#">Reglamento</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fas fa-mug-hot"></i>
+                    <h3>Café & Snacks</h3>
+                    <p>Delicias artesanales para acompañar.</p>
+                    <button class="dropdown-btn">Más opciones</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Menú completo</a></li>
+                        <li><a href="#">Promociones</a></li>
+                        <li><a href="#">Reseñas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            .dropdown-btn {
+                margin-top: 1rem;
+                padding: 0.5rem 1rem;
+                background: var(--primary);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background 0.3s ease;
+            }
+        
+            .dropdown-btn:hover {
+                background: #ff3b3b;
+            }
+        
+            .dropdown-menu {
+                display: none;
+                list-style: none;
+                margin-top: 0.5rem;
+                padding: 0;
+                background: var(--bg-light);
+                border-radius: var(--radius);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                z-index: 1000;
+            }
+        
+            .dropdown-menu li {
+                padding: 0.5rem 1rem;
+            }
+        
+            .dropdown-menu li a {
+                text-decoration: none;
+                color: var(--text);
+                font-weight: 500;
+                display: block;
+            }
+        
+            .dropdown-menu li a:hover {
+                color: var(--primary);
+            }
+        
+            .card {
+                position: relative;
+            }
+        </style>
+        
+        <script>
+            // Mostrar/ocultar menú en cascada
+            document.querySelectorAll('.dropdown-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const menu = button.nextElementSibling;
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        
+            // Cerrar menú si se hace clic fuera
+            window.addEventListener('click', (e) => {
+                if (!e.target.matches('.dropdown-btn')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+                }
+            });
+        </script>
+
+<section id="promociones">
+    <h2 class="title">Promociones</h2>
+    <div class="grid">
+        <!-- Promoción 1 -->
+        <div class="card">
+            <h3>Descuento en Charlas</h3>
+            <p>Obtén un <strong>20% de descuento</strong> en tu primera charla pública.</p>
+            <p><strong>Válido hasta:</strong> 30 de abril de 2025</p>
+        </div>
+        <!-- Promoción 2 -->
+        <div class="card">
+            <h3>Combo Café + Croissant</h3>
+            <p>Disfruta de un <strong>Café Espresso</strong> y un <strong>Croissant de Almendras</strong> por solo <strong>$4.50</strong>.</p>
+            <p><strong>Válido todos los días hasta 28 de abril.</strong></p>
+        </div>
+        <!-- Promoción 3 -->
+        <div class="card">
+            <h3>Zona Gamer</h3>
+            <p>¡Juega 2 horas y obtén la <strong>3ra hora gratis</strong> en nuestra Zona Gamer!</p>
+            <p><strong>Válido de lunes a viernes.</strong></p>
+        </div>
+        <!-- Promoción 4 -->
+        <div class="card">
+            <h3>Descuento en Menú</h3>
+            <p>Obtén un <strong>10% de descuento</strong> en cualquier platillo del menú al presentar tu credencial de estudiante.</p>
+            <p><strong>Válido todos los días.</strong></p>
+        </div>
+    </div>
+</section>
+
+<style>
+    #promociones .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    #promociones .card {
+        background: var(--bg-light);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    #promociones .card h3 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+
+    #promociones .card p {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+    }
+</style>
+<section id="galeria">
+    <h2 class="title">Galería</h2>
+    <div class="grid">
+        
+            
+        <figure class="card">
+            <img src="https://www.execoach.es/wp-content/uploads/Execoach-Deca%CC%81logo-de-una-reunio%CC%81n-efectiva.jpg" alt="Reunión de equipo" loading="lazy">
+            <figcaption>Reunión de equipo en CaféBinary</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://espacio.fundaciontelefonica.com/wp-content/uploads/2016/01/talleres_arduino_sabados_tecnologicos.jpg" alt="Taller de tecnología" loading="lazy">
+            <figcaption>Taller de tecnología en acción</figcaption>
+        </figure>
+        <figure class="card">
+            <img src="https://tecno-oficinas.com/img/cms/Dise%C3%B1o%20sin%20t%C3%ADtulo%20-%202024-01-25T083034-062.jpg" alt="Espacio de trabajo moderno" loading="lazy">
+            <figcaption>Espacios modernos y cómodos</figcaption>
+        </figure>
+        <figure class="card">
+        <figure class="card">
+            <img src="https://www.yuuarquitectura.com/wp-content/uploads/2019/08/Yuu-Arquitectura_Casetanova-1W.jpg" alt="Comunidad colaborando" loading="lazy">
+            <figcaption>proyectos y eventos </figcaption>
+        </figure>
+    </div>
+</section>
+
+<style>
+    #galeria .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    #galeria .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #galeria .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    #galeria .card:hover img {
+        transform: scale(1.1);
+    }
+
+    #galeria .card figcaption {
+        text-align: center;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        color: var(--text);
+    }
+</style>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CaféBinary - Todos los derechos reservados.
+            <section id="redes-sociales">
+                <h2 class="title">Síguenos en nuestras redes sociales</h2>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="https://www.facebook.com/profile.php?id=61567632213174" target="_blank" aria-label="Facebook" style="margin: 0 1rem; color: var(--primary); font-size: 2rem;">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" style="margin: 0 1rem; color: var(--primary); font-size: 2rem;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" style="margin: 0 1rem; color: var(--primary); font-size: 2rem;">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </section>
+        </footer>
+
+    <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" aria-label="Volver al inicio">
+        ↑
+    </button>
+
+    <script>
+        // Mostrar botón "Volver al inicio" al hacer scroll
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
+    
+</body>
+</html>

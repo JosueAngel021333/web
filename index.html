@@ -10,7 +10,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        /* Decoraciones en los bordes */
+      /* Ajustes para el menú desplegable en pantallas pequeñas */
+    @media (max-width: 768px) {
+        .dropdown-menu {
+            position: static; /* Cambia la posición para que no se superponga */
+            width: 100%; /* Ocupa todo el ancho disponible */
+            margin-top: 0.5rem;
+            text-align: center; /* Centra las opciones */
+        }
+
+        .dropdown-menu li {
+            padding: 0.8rem 0; /* Aumenta el espacio entre las opciones */
+        }
+
+        .dropdown-menu li a {
+            font-size: 1rem; /* Ajusta el tamaño del texto */
+        }
+
+        .dropdown-btn {
+            width: 100%; /* Botón ocupa todo el ancho */
+            text-align: center;
+        }
+    }
+      /* Decoraciones en los bordes */
     body::before, body::after {
         content: '';
         position: fixed;
